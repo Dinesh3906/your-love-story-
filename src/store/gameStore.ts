@@ -1,0 +1,93 @@
+import { create } from 'zustand';
+
+export interface Character {
+  id: string;
+  name: string;
+  role: string;
+  themeColor?: string;
+  image?: string;
+  emotionalState?: string;
+}
+
+export interface Scene {
+  id: string;
+  title: string;
+  summary: string;
+  dialogue: string;
+  backgroundImage?: string; // Base64
+  characterImage?: string; // Base64
+  speaker?: string;
+  mood?: string;
+  tension?: number;
+  location?: string;
+  time?: string;
+}
+
+export interface GameState {
+  currentSceneId: string | null;
+  currentPOV: string | null;
+  characters: Character[];
+  scenes: Scene[];
+  userPrompt: string;
+  stats: {
+    relationship: number;
+    trust: number;
+    tension: number;
+    emotionalStability: number;
+  };
+  history: string[];
+  rawNarrative: string;
+  characterBindings: Record<string, string>; // Maps relational roles to names
+
+  setScenes: (scenes: Scene[]) => void;
+  setCharacters: (chars: Character[]) => void;
+  updateCharacter: (id: string, updates: Partial<Character>) => void;
+  setCurrentScene: (id: string) => void;
+  setCurrentPOV: (id: string) => void;
+  setUserPrompt: (prompt: string) => void;
+  setRawNarrative: (narrative: string) => void;
+  setCharacterBindings: (bindings: Record<string, string>) => void;
+  getCurrentScene: () => Scene | null;
+  updateStats: (effects: { relationship?: number; trust?: number }) => void;
+  addToHistory: (entry: string) => void;
+  resetGame: () => void;
+}
+
+const initialState = {
+  currentSceneId: null,
+  currentPOV: null,
+  characters: [],
+  scenes: [],
+  userPrompt: '',
+  stats: { relationship: 50, trust: 50, tension: 0, emotionalStability: 50 },
+  history: [],
+  rawNarrative: '',
+  characterBindings: {},
+};
+
+export const useGameStore = create<GameState>((set, get) => ({
+  ...initialState,
+  setScenes: (scenes) => set({ scenes, currentSceneId: scenes[0]?.id || null }),
+  setCharacters: (characters) => set({ characters, currentPOV: get().currentPOV || characters[0]?.id || null }),
+  updateCharacter: (id, updates) => set((s) => ({
+    characters: s.characters.map(c => c.id === id ? { ...c, ...updates } : c)
+  })),
+  setCurrentScene: (id) => set({ currentSceneId: id }),
+  setCurrentPOV: (id) => set({ currentPOV: id }),
+  setUserPrompt: (prompt) => set({ userPrompt: prompt }),
+  setRawNarrative: (narrative) => set({ rawNarrative: narrative }),
+  setCharacterBindings: (bindings) => set({ characterBindings: bindings }),
+  getCurrentScene: () => {
+    const state = get();
+    return state.scenes.find(s => s.id === state.currentSceneId) || null;
+  },
+  updateStats: (effects) => set((s) => ({
+    stats: {
+      ...s.stats,
+      relationship: Math.min(100, Math.max(0, s.stats.relationship + (effects.relationship || 0))),
+      trust: Math.min(100, Math.max(0, s.stats.trust + (effects.trust || 0))),
+    }
+  })),
+  addToHistory: (entry) => set((s) => ({ history: [...s.history, entry] })),
+  resetGame: () => set(initialState),
+}));
