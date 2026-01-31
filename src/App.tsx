@@ -15,7 +15,6 @@ function App() {
   return (
     <div className='h-screen w-screen bg-cinematic-gradient flex justify-center items-center overflow-hidden relative'>
       <BackgroundMusic />
-      <MusicControls />
       {/* Noise Texture for Depth */}
       <div className='noise-overlay'></div>
 
@@ -27,6 +26,7 @@ function App() {
         {gameState === 'playing' && <GameScreen onGameOver={handleGameOver} />}
         {gameState === 'ending' && <EndingScreen onRestart={handleRestart} />}
       </div>
+      <MusicControls />
     </div>
   );
 }

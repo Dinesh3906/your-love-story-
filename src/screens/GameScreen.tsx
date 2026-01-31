@@ -151,14 +151,14 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
 
   if (isLoading || !currentScene) {
     return (
-      <div className='h-full w-full bg-black flex items-center justify-center p-12'>
+      <div className='h-full w-full bg-black flex items-center justify-center p-4 sm:p-12'>
         <motion.div
-          animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.98, 1, 0.98] }}
+          animate={{ opacity: [0.4, 0.9, 0.4], scale: [0.98, 1, 0.98] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className='text-center space-y-6'
+          className='text-center space-y-8'
         >
-          <div className='text-cherry-blossom text-4xl font-serif tracking-[0.4em] uppercase text-glow-romantic'>Awaiting the Season...</div>
-          <div className='text-white/20 text-[12px] tracking-[0.6em] font-sans'>The wind carries your next chapter</div>
+          <div className='text-cherry-blossom text-5xl sm:text-6xl font-serif tracking-[0.2em] sm:tracking-[0.4em] uppercase text-glow-romantic drop-shadow-[0_0_20px_rgba(255,183,197,0.5)]'>Awaiting the Season...</div>
+          <div className='text-white/60 sm:text-white/20 text-[14px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.6em] font-sans italic'>The wind carries your next chapter</div>
         </motion.div>
       </div>
     );
@@ -274,8 +274,8 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
       <div className='absolute inset-0 z-10 pointer-events-none noise-overlay opacity-5'></div>
 
       {/* Story Narrative Layer */}
-      <div className='flex-1 flex flex-col justify-end pt-20 lg:pt-32 pb-10 px-4 sm:px-10 lg:px-20 xl:px-32 relative z-30 depth-container'>
-        <div className='w-full max-w-[1100px] mx-auto xl:ml-0'>
+      <div className='flex-1 flex flex-col justify-end pt-24 lg:pt-44 pb-16 sm:pb-10 px-4 sm:px-10 lg:px-20 relative z-30 depth-container'>
+        <div className='w-full max-w-[1100px] mx-auto'>
           {!showChoices ? (
             <DialogueBox
               speaker={currentScene.speaker}
@@ -286,14 +286,14 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
             <motion.div
               initial={{ opacity: 0, y: 50, rotateX: -10 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              className='space-y-8 sm:space-y-16'
+              className='space-y-8 sm:space-y-10'
             >
-              <div className='xl:text-left text-center px-4'>
+              <div className='text-center px-4'>
                 <span className='px-10 py-3 glass-morphism text-cherry-blossom rounded-full text-[11px] font-black uppercase tracking-[0.5em] neon-border shadow-2xl'>
                   THE WHISPER OF FATE
                 </span>
               </div>
-              <div className='max-w-[850px]'>
+              <div className='max-w-[850px] mx-auto'>
                 <ChoiceButtons
                   choices={choices}
                   onChoiceSelect={handleChoiceSelect}
