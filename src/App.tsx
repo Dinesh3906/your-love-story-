@@ -2,7 +2,8 @@ import { useState } from 'react';
 import StartScreen from './screens/StartScreen';
 import GameScreen from './screens/GameScreen';
 import EndingScreen from './screens/EndingScreen';
-import { useGameStore } from './store/gameStore';
+import { BackgroundMusic } from './components/BackgroundMusic';
+import { MusicControls } from './components/MusicControls';
 
 function App() {
   const [gameState, setGameState] = useState<'start' | 'playing' | 'ending'>('start');
@@ -13,6 +14,8 @@ function App() {
 
   return (
     <div className='h-screen w-screen bg-cinematic-gradient flex justify-center items-center overflow-hidden relative'>
+      <BackgroundMusic />
+      <MusicControls />
       {/* Noise Texture for Depth */}
       <div className='noise-overlay'></div>
 

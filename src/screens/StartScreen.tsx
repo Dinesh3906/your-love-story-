@@ -60,7 +60,8 @@ const CherryPetalSystem = () => {
 
 export default function StartScreen({ onStart }: { onStart: () => void }) {
   const [input, setInput] = useState('');
-  const { resetGame, setUserPrompt } = useGameStore();
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+  const { resetGame, setUserPrompt, setUserGender } = useGameStore();
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -85,6 +86,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
   const handleStart = () => {
     resetGame();
     setUserPrompt(input);
+    setUserGender(gender);
     onStart();
   };
 
@@ -173,11 +175,38 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
               </div>
               <div className='relative'>
                 <textarea
-                  className='w-full h-56 lg:h-72 p-8 rounded-[24px] bg-black/50 border border-white/5 outline-none transition-all resize-none font-sans text-lg text-white/90 placeholder-white/5 focus:border-cherry-blossom/20 focus:ring-1 focus:ring-cherry-blossom/5 custom-scrollbar leading-relaxed'
+                  className='w-full h-56 lg:h-72 p-8 rounded-[24px] bg-black/50 border border-white/40 outline-none transition-all resize-none font-sans text-lg text-white/90 placeholder-white/40 focus:border-cherry-blossom/20 focus:ring-1 focus:ring-cherry-blossom/5 custom-scrollbar leading-relaxed'
                   placeholder='Start your melody here...'
                   value={input}
                   onChange={e => setInput(e.target.value)}
                 />
+              </div>
+
+              {/* Gender Selection */}
+              <div className='space-y-4'>
+                <div className="flex items-center gap-4">
+                  <span className="text-cherry-blossom text-sm">✧</span>
+                  <label className='text-[10px] uppercase tracking-[0.5em] text-cherry-blossom font-black'>Who are you?</label>
+                </div>
+                <div className='flex p-1 bg-black/40 rounded-2xl border border-white/10 backdrop-blur-md relative overflow-hidden'>
+                  <motion.div
+                    className='absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white/10 rounded-xl border border-white/20'
+                    animate={{ x: gender === 'male' ? 0 : '100%' }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                  <button
+                    onClick={() => setGender('male')}
+                    className={`flex-1 py-3 text-[10px] font-black tracking-[0.2em] uppercase relative z-10 transition-colors duration-300 ${gender === 'male' ? 'text-white' : 'text-white/40 hover:text-white/60'}`}
+                  >
+                    Male
+                  </button>
+                  <button
+                    onClick={() => setGender('female')}
+                    className={`flex-1 py-3 text-[10px] font-black tracking-[0.2em] uppercase relative z-10 transition-colors duration-300 ${gender === 'female' ? 'text-white' : 'text-white/40 hover:text-white/60'}`}
+                  >
+                    Female
+                  </button>
+                </div>
               </div>
             </div>
 

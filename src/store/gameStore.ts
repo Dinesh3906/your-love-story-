@@ -37,6 +37,8 @@ export interface GameState {
   };
   history: string[];
   rawNarrative: string;
+  userGender: 'male' | 'female';
+  isMusicPlaying: boolean;
   characterBindings: Record<string, string>; // Maps relational roles to names
 
   setScenes: (scenes: Scene[]) => void;
@@ -45,6 +47,8 @@ export interface GameState {
   setCurrentScene: (id: string) => void;
   setCurrentPOV: (id: string) => void;
   setUserPrompt: (prompt: string) => void;
+  setUserGender: (gender: 'male' | 'female') => void;
+  setIsMusicPlaying: (playing: boolean) => void;
   setRawNarrative: (narrative: string) => void;
   setCharacterBindings: (bindings: Record<string, string>) => void;
   getCurrentScene: () => Scene | null;
@@ -53,7 +57,7 @@ export interface GameState {
   resetGame: () => void;
 }
 
-const initialState = {
+const initialState: Omit<GameState, 'setScenes' | 'setCharacters' | 'updateCharacter' | 'setCurrentScene' | 'setCurrentPOV' | 'setUserPrompt' | 'setUserGender' | 'setIsMusicPlaying' | 'setRawNarrative' | 'setCharacterBindings' | 'getCurrentScene' | 'updateStats' | 'addToHistory' | 'resetGame'> = {
   currentSceneId: null,
   currentPOV: null,
   characters: [],
@@ -62,6 +66,8 @@ const initialState = {
   stats: { relationship: 50, trust: 50, tension: 0, emotionalStability: 50 },
   history: [],
   rawNarrative: '',
+  userGender: 'male' as const,
+  isMusicPlaying: true,
   characterBindings: {},
 };
 
@@ -75,6 +81,8 @@ export const useGameStore = create<GameState>((set, get) => ({
   setCurrentScene: (id) => set({ currentSceneId: id }),
   setCurrentPOV: (id) => set({ currentPOV: id }),
   setUserPrompt: (prompt) => set({ userPrompt: prompt }),
+  setUserGender: (gender) => set({ userGender: gender }),
+  setIsMusicPlaying: (playing) => set({ isMusicPlaying: playing }),
   setRawNarrative: (narrative) => set({ rawNarrative: narrative }),
   setCharacterBindings: (bindings) => set({ characterBindings: bindings }),
   getCurrentScene: () => {

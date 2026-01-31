@@ -18,7 +18,7 @@ export interface Scene {
 export const SceneBuilder = {
   buildScenes: async (userPrompt: string, history: string[] = [], chosenOption: Choice | null = null): Promise<Scene[]> => {
     try {
-      const { setRawNarrative, updateStats } = useGameStore.getState();
+      const { setRawNarrative, updateStats, userGender } = useGameStore.getState();
 
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
       const res = await fetch(`${API_URL}/generate`, {
@@ -26,6 +26,7 @@ export const SceneBuilder = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           summary_of_previous: history.length > 0 ? history.slice(-6).join(" | ") : userPrompt,
+          user_gender: userGender,
           chosen_option: chosenOption ? {
             id: chosenOption.id,
             text: chosenOption.text,
