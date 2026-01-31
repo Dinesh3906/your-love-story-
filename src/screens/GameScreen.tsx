@@ -274,7 +274,7 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
       <div className='absolute inset-0 z-10 pointer-events-none noise-overlay opacity-5'></div>
 
       {/* Story Narrative Layer */}
-      <div className='flex-1 flex flex-col justify-end pt-24 lg:pt-44 pb-16 sm:pb-10 px-4 sm:px-10 lg:px-20 relative z-30 depth-container'>
+      <div className='flex-1 flex flex-col justify-center sm:justify-end pt-24 lg:pt-44 pb-16 sm:pb-10 px-4 sm:px-10 lg:px-20 relative z-30 depth-container'>
         <div className='w-full max-w-[1100px] mx-auto'>
           {!showChoices ? (
             <DialogueBox

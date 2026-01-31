@@ -169,9 +169,9 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
 
           <div className='space-y-8 relative z-10'>
             <div className='space-y-4'>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center sm:justify-start gap-4">
                 <span className="text-cherry-blossom text-xl">✧</span>
-                <label className='text-[10px] uppercase tracking-[0.5em] text-cherry-blossom font-black'>The Heart's Beginning</label>
+                <label className='text-[10px] uppercase tracking-[0.5em] text-cherry-blossom font-black text-center sm:text-left'>The Heart's Beginning</label>
               </div>
               <div className='relative'>
                 <textarea
@@ -184,9 +184,9 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
 
               {/* Gender Selection */}
               <div className='space-y-4'>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-center sm:justify-start gap-4">
                   <span className="text-cherry-blossom text-sm">✧</span>
-                  <label className='text-[10px] uppercase tracking-[0.5em] text-cherry-blossom font-black'>Who are you?</label>
+                  <label className='text-[10px] uppercase tracking-[0.5em] text-cherry-blossom font-black text-center sm:text-left'>Who are you?</label>
                 </div>
                 <div className='flex p-1 bg-black/40 rounded-2xl border border-white/10 backdrop-blur-md relative overflow-hidden'>
                   <motion.div

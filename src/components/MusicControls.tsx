@@ -11,7 +11,7 @@ export const MusicControls = () => {
             whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMusicPlaying(!isMusicPlaying)}
-            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[100] p-4 sm:p-4 rounded-full glass-morphism border border-white/30 text-white/90 shadow-[0_0_30px_rgba(255,183,197,0.2)] hover:shadow-[0_0_40px_rgba(255,183,197,0.4)] transition-all group overflow-hidden"
+            className="fixed bottom-24 right-6 sm:bottom-8 sm:right-8 z-[100] p-4 sm:p-4 rounded-full glass-morphism border border-cherry-blossom/60 text-white shadow-[0_0_30px_rgba(255,183,197,0.4)] hover:shadow-[0_0_40px_rgba(255,183,197,0.6)] transition-all group overflow-hidden"
             title={isMusicPlaying ? "Mute Music" : "Play Music"}
         >
             <div className="relative z-10 flex items-center justify-center">
