@@ -191,22 +191,22 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
       <CherryPetalSystem />
 
       {/* Cinematic HUD (Top) */}
-      <div className='absolute top-0 left-0 right-0 z-40 px-4 py-4 sm:px-6 sm:py-6 lg:px-16 lg:py-10 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-6 pointer-events-none'>
+      <div className='absolute top-0 left-0 right-0 z-40 px-3 py-3 sm:px-6 sm:py-6 lg:px-16 lg:py-10 flex flex-row justify-between items-start gap-2 sm:gap-6 pointer-events-none'>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           className='flex gap-4'
         >
           {/* Relationship Stats */}
-          <div className='glass-morphism px-4 py-3 sm:px-8 sm:py-4 rounded-[20px] sm:rounded-[24px] flex items-center gap-4 sm:gap-8 border-white/5 pointer-events-auto'>
+          <div className='glass-morphism px-3 py-2 sm:px-8 sm:py-4 rounded-[16px] sm:rounded-[24px] flex items-center gap-3 sm:gap-8 border-white/5 pointer-events-auto'>
             <div className='flex flex-col'>
-              <span className='text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-cherry-blossom font-black'>Affinity</span>
-              <span className='text-lg sm:text-2xl font-serif text-white uppercase'>{stats.relationship}%</span>
+              <span className='text-[7px] sm:text-[10px] uppercase tracking-[0.3em] text-cherry-blossom font-black'>Affinity</span>
+              <span className='text-sm sm:text-2xl font-serif text-white uppercase leading-tight'>{stats.relationship}%</span>
             </div>
-            <div className='w-[1px] h-8 sm:h-10 bg-white/10'></div>
+            <div className='w-[1px] h-6 sm:h-10 bg-white/10'></div>
             <div className='flex flex-col'>
-              <span className='text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-soft-lavender font-black'>Bond</span>
-              <span className='text-lg sm:text-2xl font-serif text-white uppercase'>{stats.trust}%</span>
+              <span className='text-[7px] sm:text-[10px] uppercase tracking-[0.3em] text-soft-lavender font-black'>Bond</span>
+              <span className='text-sm sm:text-2xl font-serif text-white uppercase leading-tight'>{stats.trust}%</span>
             </div>
           </div>
         </motion.div>
@@ -217,17 +217,17 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
           className='flex flex-col items-end gap-3 pointer-events-auto'
         >
           <div className='text-right'>
-            <div className='text-[9px] sm:text-[11px] uppercase tracking-[0.6em] text-white/50 mb-1'>Location</div>
-            <div className='text-lg lg:text-xl xl:text-2xl text-white font-serif italic text-glow-romantic font-light'>{currentScene.location || 'Spring Echoes'}</div>
+            <div className='text-[7px] sm:text-[11px] uppercase tracking-[0.4em] text-white/50 mb-0.5 sm:mb-1'>Location</div>
+            <div className='text-xs sm:text-xl xl:text-2xl text-white font-serif italic text-glow-romantic font-light leading-tight'>{currentScene.location || 'Spring Echoes'}</div>
           </div>
-          <div className='w-32 sm:w-48 xl:w-56 h-[1.5px] sm:h-[2px] bg-white/10 rounded-full overflow-hidden shadow-[0_0_10px_rgba(255,183,197,0.1)]'>
+          <div className='w-32 sm:w-48 xl:w-56 h-[1px] sm:h-[2px] bg-white/10 rounded-full overflow-hidden shadow-[0_0_10px_rgba(255,183,197,0.1)]'>
             <motion.div
               className='h-full bg-gradient-to-r from-cherry-blossom to-soft-lavender shadow-[0_0_20px_rgba(255,183,197,0.4)]'
               animate={{ width: `${stats.tension}%` }}
               transition={{ duration: 1.5 }}
             />
           </div>
-          <div className='text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-white/40 mr-1'>Atmospheric Tension</div>
+          <div className='text-[8px] sm:text-[10px] uppercase tracking-[0.3em] text-white/40 mr-1'>Tension</div>
         </motion.div>
       </div>
 
