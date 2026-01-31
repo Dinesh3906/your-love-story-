@@ -156,13 +156,13 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
       </div>
 
       {/* RIGHT SIDE: Interactive glassmorphism card (40%) */}
-      <div className='flex-1 flex items-center justify-center p-6 sm:p-8 lg:p-12 xl:p-24 relative z-30 depth-container'>
+      <div className='flex-1 flex items-center justify-center p-4 sm:p-8 lg:p-12 xl:p-24 relative z-30 depth-container'>
         <motion.div
           style={{ rotateX, rotateY, perspective: 1500, translateZ: 100 }}
           initial={{ opacity: 0, y: 100, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.8, type: 'spring' }}
-          className='w-full max-w-[500px] glass-morphism p-6 sm:p-8 lg:p-12 rounded-[32px] sm:rounded-[40px] neon-border animate-float relative overflow-hidden group'
+          className='w-full max-w-[560px] lg:max-w-[500px] glass-morphism p-7 sm:p-10 lg:p-12 rounded-[36px] sm:rounded-[40px] neon-border animate-float relative overflow-hidden group'
         >
           {/* Internal Bloom for the card */}
           <div className='absolute -top-32 -right-32 w-64 h-64 bg-cherry-blossom/5 rounded-full blur-[70px] group-hover:bg-cherry-blossom/15 transition-all duration-1000'></div>
@@ -175,7 +175,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
               </div>
               <div className='relative'>
                 <textarea
-                  className='w-full h-40 sm:h-56 lg:h-72 p-6 sm:p-8 rounded-[20px] sm:rounded-[24px] bg-black/50 border border-white/40 outline-none transition-all resize-none font-sans text-base sm:text-lg text-white/90 placeholder-white/40 focus:border-cherry-blossom/20 focus:ring-1 focus:ring-cherry-blossom/5 custom-scrollbar leading-relaxed'
+                  className='w-full h-48 sm:h-64 lg:h-72 p-7 sm:p-8 rounded-[24px] sm:rounded-[28px] lg:rounded-[24px] bg-black/50 border border-white/40 outline-none transition-all resize-none font-sans text-base sm:text-lg text-white/90 placeholder-white/40 focus:border-cherry-blossom/20 focus:ring-1 focus:ring-cherry-blossom/5 custom-scrollbar leading-relaxed'
                   placeholder='Start your melody here...'
                   value={input}
                   onChange={e => setInput(e.target.value)}
@@ -214,7 +214,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
               whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(255, 183, 197, 0.4)' }}
               whileTap={{ scale: 0.96 }}
               onClick={handleStart}
-              className='w-full py-4 sm:py-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-cherry-blossom via-soft-lavender to-cherry-blossom bg-[length:200%_auto] hover:bg-right transition-all duration-700 text-midnight font-black tracking-[0.4em] text-[10px] shadow-[0_20px_60px_-15px_rgba(255,183,197,0.3)] relative overflow-hidden group'
+              className='w-full py-5 sm:py-6 lg:py-5 rounded-2xl bg-gradient-to-br from-cherry-blossom via-soft-lavender to-cherry-blossom bg-[length:200%_auto] hover:bg-right transition-all duration-700 text-midnight font-black tracking-[0.4em] text-[11px] sm:text-[12px] lg:text-[10px] shadow-[0_20px_60px_-15px_rgba(255,183,197,0.3)] relative overflow-hidden group'
             >
               <span className='relative z-10'>BEGIN JOURNEY</span>
               <div className='absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700'></div>
