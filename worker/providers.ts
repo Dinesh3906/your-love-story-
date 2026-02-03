@@ -98,11 +98,11 @@ PLAYER'S LATEST CHOICE: "${request.chosen_option.text}" (Intent: ${request.chose
 
 TASK: Continue the story directly from this choice.
 1. ACKNOWLEDGE the player's choice.
-2. DEEP EXPLANATION & CHAOS: Have the NPC do something independent. They MUST provide a deep, perhaps disruptive explanation for their behavior. 
-   - **BOMBSHELL**: Have them reveal a secret, a dark motive, or a truth that brings "chaos" to the current situation.
+2. DEEP NPC EXPLANATION: The NPC MUST provide a deep, perhaps disruptive or chaotic explanation for their behavior/history (e.g. tattoos, secrets, motives).
+   - **MANDATORY**: This explanation MUST be in the "story" text.
 3. PUSH the narrative forward with NEW developments (avoid repetitive "eyes").
 4. Present 4 NEW PLAYER-ONLY options (Max 10 words each).
-   - **PROHIBITED**: Never put NPC explanations or reasoning in the options.
+   - **ZERO TOLERANCE**: Do NOT put NPC explanations or reasoning in the options. Options are only for the PLAYER's response to the NPC's explanation.
 5. REPETITION CHECK: No recycling of past dialogue.
 `;
     } else {
