@@ -128,7 +128,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
         <div className='absolute top-1/2 left-0 -translate-y-1/2 w-[1000px] h-[1000px] bg-cherry-blossom/10 rounded-full blur-[160px] animate-pulse-bloom z-0'></div>
       </div>
 
-      <div className='lg:hidden w-full pt-8 pb-4 text-center relative z-20 px-6'>
+      <div className='lg:hidden w-full pt-safe pb-4 text-center relative z-20 px-6'>
         <h1 className='text-3xl sm:text-5xl font-serif text-white tracking-widest text-glow-romantic animate-title-shimmer inline-block font-black'>YOUR LOVE STORY</h1>
         <p className='mt-2 text-[14px] sm:text-[16px] text-white/80 font-script'>Only the heart remembers what the mind forgets.</p>
       </div>

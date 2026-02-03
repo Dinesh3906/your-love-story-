@@ -1,0 +1,26 @@
+Note: Since the narrative engine runs on your PC, your phone needs to be on the same WiFi network as your PC for the story to generate# Your Love Story - Quick Start Guide
+
+This package contains the cinematic interactive story "Your Love Story".
+
+## Prerequisites
+1.  **Python**: Install Python 3.9+ from python.org.
+2.  **Groq API Key**: You need an API key to run the narrative engine. Get one for free at console.groq.com.
+
+## How to Run
+
+1.  **Set up the API Key**:
+    - Open the `.env` file in this folder.
+    - Replace the text with: `GROQ_API_KEY=your_actual_key_here`
+
+2.  **Start the Server (Narrative Engine)**:
+    - Open a terminal/command prompt in this folder.
+    - Run: `pip install fastapi uvicorn groq pydantic python-dotenv`
+    - Run: `python server.py`
+    - Keep this window open.
+
+3.  **Play the Game**:
+    - Open the `dist` folder.
+    - Double-click `index.html` to open it in your browser (Chrome or Edge recommended).
+    - Alternatively, host the content of the `dist` folder on any web server.
+
+Enjoy your story!

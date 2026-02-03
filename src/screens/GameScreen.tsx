@@ -169,7 +169,7 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
       <CherryPetalSystem />
 
       {/* Cinematic HUD (Top) */}
-      <div className='absolute top-0 left-0 right-0 z-40 px-3 py-3 sm:px-6 sm:py-6 lg:px-16 lg:py-10 flex flex-row justify-between items-start gap-2 sm:gap-6 pointer-events-none'>
+      <div className='absolute top-0 left-0 right-0 z-40 px-3 py-3 sm:px-6 sm:py-6 lg:px-16 lg:py-10 flex flex-row justify-between items-start gap-2 sm:gap-6 pointer-events-none pt-safe'>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
