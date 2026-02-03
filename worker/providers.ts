@@ -89,11 +89,15 @@ export function buildUserPrompt(request: PromptRequest): string {
     let user_input_section = "";
     if (request.chosen_option) {
         user_input_section = `
-Previous Story Summary: ${request.summary_of_previous}
+STORY CONTEXT (Key facts to remember):
+${request.summary_of_previous}
+
 PLAYER'S LATEST CHOICE: "${request.chosen_option.text}" (Intent: ${request.chosen_option.intent})
 
-TASK: Continue the story directly from this choice. Resolve the action. Then present 2-4 NEW options. 
-REMINDER: Options must be EXTREMELY SHORT (max 10 words).
+TASK: Continue the story directly from this choice.
+1. ACKNOWLEDGE the player's choice immediately (don't ignore it).
+2. PUSH the narrative forward with tension or emotion.
+3. Present 2-4 NEW options (Max 10 words each).
 `;
     } else {
         user_input_section = `
@@ -101,8 +105,8 @@ START NEW STORY.
 PLAYER GENDER: ${request.user_gender}
 Initial Premise: ${request.summary_of_previous}
 
-TASK: Start the story based on this premise, keeping the PLAYER GENDER in mind. Then present 2-4 NEW options.
-REMINDER: Options must be EXTREMELY SHORT (max 10 words).
+TASK: Start the story based on this premise, deeply anchored in the PLAYER GENDER perspective.
+THEN: Present 2-4 NEW options (Max 10 words each).
 `;
     }
     user_input_section += `\nREMINDER: The player is ${request.user_gender}. Maintain this perspective.`;

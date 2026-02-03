@@ -26,8 +26,8 @@ export const SceneBuilder = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           summary_of_previous: history.length > 0
-            ? `PAST EVENTS:\n${history.slice(-15).join("\n---\n")}\n\nCURRENT SITUATION:`
-            : userPrompt,
+            ? `INITIAL PREMISE: ${userPrompt}\n\nPAST EVENTS:\n${history.slice(-15).join("\n---\n")}\n\nCURRENT SITUATION:`
+            : `INITIAL PREMISE: ${userPrompt}`,
           user_gender: userGender,
           chosen_option: chosenOption ? {
             id: chosenOption.id,
