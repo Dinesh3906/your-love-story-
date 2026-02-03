@@ -50,7 +50,7 @@ export async function generateWithGroq(apiKey: string, prompt: string, systemPro
                 { role: "system", content: systemPrompt },
                 { role: "user", content: prompt }
             ],
-            model: "llama-3.1-70b-versatile", // Switched to 70b for better JSON logic
+            model: "llama-3.1-8b-instant", // Reverted to 8b for better rate-limit stability
             response_format: { type: "json_object" },
             max_tokens: 1024,
             temperature: 0.7
