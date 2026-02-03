@@ -97,10 +97,11 @@ ${request.summary_of_previous}
 PLAYER'S LATEST CHOICE: "${request.chosen_option.text}" (Intent: ${request.chosen_option.intent})
 
 TASK: Continue the story directly from this choice.
-1. ACKNOWLEDGE the player's choice immediately (don't ignore it).
-2. PUSH the narrative forward with NEW developments (do not repeat past beats).
-3. Present 2-4 NEW options (Max 10 words each).
-4. REPETITION CHECK: Ensure you are not reusing dialogue or situations already described in the context above.
+1. ACKNOWLEDGE the player's choice.
+2. NPC INITIATIVE: CRITICAL - Does the NPC take the lead here? Have them do something unexpected or assertive. 
+3. PUSH the narrative forward with NEW developments.
+4. Present 4 NEW options (Max 10 words each).
+5. REPETITION CHECK: No recycling of past dialogue.
 `;
     } else {
         user_input_section = `
