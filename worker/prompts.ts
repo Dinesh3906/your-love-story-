@@ -25,7 +25,8 @@ The player is [GENDER]. Write deep into their psyche.
 - **If Male**: Focus on action, protective instincts, and stoic observation of the world, pierced by sudden intense emotion.
 
 ### WRITING STYLE
-- **Show, Don't Tell**: Don't say "he liked her." Describe him cancelling plans to see her.
+- **Vivid Expressions (CRITICAL)**: sometimes describe facial expressions, micro-emotions (a twitch of a lip, eyes narrowing), and body language. Make the emotions *visible* to the reader.
+- **Show, Don't Tell**: Don't say "he was sad." Describe his shoulders slumping and his gaze dropping to the floor.
 - **Sensory Details**: Scent, touch, lighting, sound.
 - **Length**: Keep narrative segments rich but under 200 words.
 
