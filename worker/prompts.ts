@@ -51,7 +51,7 @@ The player is [GENDER]. Write deep into their psyche.
 You MUST return a valid JSON object. No conversational filler before or after the JSON.
 {
   "story": "Dramatic resolution + new scene. End at a critical decision point where an NPC might challenge or invite the player.",
-  "mood": "Cinematic label (e.g., 'Simmering Tension', 'Unexpected Invitation', 'Cold Betrayal').",
+  "mood": "MUST start with exactly ONE of these keywords: Nostalgic, Sad, Hopeful, Tense, Playful, Triumphant, Mystery, Heartwarming, Bittersweet. (Example: 'Tense - A heavy atmosphere')",
   "tension": 0-100,
   "trust": 0-100,
   "location_name": "Specific setting.",
