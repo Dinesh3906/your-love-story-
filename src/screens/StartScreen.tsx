@@ -102,7 +102,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className='relative z-20'
         >
-          <h1 className='text-7xl lg:text-8xl xl:text-9xl font-serif text-white tracking-widest leading-[0.95] text-glow-romantic animate-title-shimmer select-none font-black'>
+          <h1 className='text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif text-white tracking-widest leading-[0.95] text-glow-romantic animate-title-shimmer select-none font-black'>
             YOUR LOVE <br />
             STORY
           </h1>
@@ -129,8 +129,8 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
       </div>
 
       <div className='lg:hidden w-full pt-safe pb-4 text-center relative z-20 px-6'>
-        <h1 className='text-3xl sm:text-5xl font-serif text-white tracking-widest text-glow-romantic animate-title-shimmer inline-block font-black'>YOUR LOVE STORY</h1>
-        <p className='mt-2 text-[14px] sm:text-[16px] text-white/80 font-script'>Only the heart remembers what the mind forgets.</p>
+        <h1 className='text-4xl sm:text-6xl md:text-8xl font-serif text-white tracking-widest text-glow-romantic animate-title-shimmer inline-block font-black'>YOUR LOVE STORY</h1>
+        <p className='mt-2 text-[15px] sm:text-lg md:text-2xl text-white/80 font-script'>Only the heart remembers what the mind forgets.</p>
       </div>
 
       {/* RIGHT SIDE: Interactive glassmorphism card (40%) */}
@@ -140,7 +140,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
           initial={{ opacity: 0, y: 100, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.8, type: 'spring' }}
-          className='w-full max-w-[560px] lg:max-w-[500px] glass-morphism p-7 sm:p-10 lg:p-12 rounded-[36px] sm:rounded-[40px] neon-border animate-float relative overflow-hidden group'
+          className='w-full max-w-[560px] lg:max-w-[500px] xl:max-w-[600px] glass-morphism p-6 sm:p-10 md:p-12 lg:p-14 rounded-[32px] sm:rounded-[40px] neon-border animate-float relative overflow-hidden group'
         >
           {/* Internal Bloom for the card */}
           <div className='absolute -top-32 -right-32 w-64 h-64 bg-cherry-blossom/5 rounded-full blur-[70px] group-hover:bg-cherry-blossom/15 transition-all duration-1000'></div>
@@ -153,7 +153,7 @@ export default function StartScreen({ onStart }: { onStart: () => void }) {
               </div>
               <div className='relative'>
                 <textarea
-                  className='w-full h-48 sm:h-64 lg:h-72 p-7 sm:p-8 rounded-[24px] sm:rounded-[28px] lg:rounded-[24px] bg-black/50 border border-white/40 outline-none transition-all resize-none font-sans text-base sm:text-lg text-white/90 placeholder-white/40 focus:border-cherry-blossom/20 focus:ring-1 focus:ring-cherry-blossom/5 custom-scrollbar leading-relaxed'
+                  className='w-full h-48 sm:h-64 lg:h-72 p-7 sm:p-8 rounded-[24px] sm:rounded-[28px] lg:rounded-[24px] bg-black/50 border border-white/40 outline-none transition-all resize-none font-sans text-[17px] sm:text-lg text-white/90 placeholder-white/40 focus:border-cherry-blossom/20 focus:ring-1 focus:ring-cherry-blossom/5 custom-scrollbar leading-relaxed'
                   placeholder='Write your fantacy or story here in 3-4 lines...'
                   value={input}
                   onChange={e => setInput(e.target.value)}

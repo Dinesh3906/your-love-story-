@@ -41,7 +41,7 @@ export default function DialogueBox({ speaker, text, onComplete }: Props) {
       initial={{ opacity: 0, y: 50, rotateX: 5 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      className="glass-morphism rounded-[32px] sm:rounded-[48px] p-5 sm:p-12 lg:p-14 shadow-2xl relative z-10 neon-border"
+      className="glass-morphism rounded-[24px] sm:rounded-[32px] md:rounded-[40px] lg:rounded-[48px] p-5 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl relative z-10 neon-border"
     >
       {/* Soft Cherry Glow Backdrop */}
       <div className='absolute -bottom-32 -right-32 w-80 h-80 bg-cherry-blossom/5 rounded-full blur-[100px] pointer-events-none'></div>
@@ -64,10 +64,10 @@ export default function DialogueBox({ speaker, text, onComplete }: Props) {
       </AnimatePresence>
 
       <div className="relative pt-4 sm:pt-8">
-        <div className="min-h-[80px] sm:min-h-[120px] lg:min-h-[160px] max-h-[40vh] overflow-y-auto custom-scrollbar pr-0 sm:pr-8">
-          <p className="text-white/95 text-[17px] sm:text-2xl lg:text-4xl font-serif leading-[1.6] tracking-wide selection:bg-cherry-blossom/30 italic font-light drop-shadow-sm text-center sm:text-left">
+        <div className="min-h-[100px] sm:min-h-[120px] lg:min-h-[160px] max-h-[40vh] md:max-h-[50vh] overflow-y-auto custom-scrollbar pr-0 sm:pr-8">
+          <p className="text-white/95 text-[18px] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif leading-[1.6] md:leading-[1.6] tracking-wide selection:bg-cherry-blossom/30 italic font-light sm:drop-shadow-sm text-center sm:text-left">
             {displayText}
-            {isTyping && <motion.span animate={{ opacity: [0, 1, 0], scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="inline-block w-2 sm:w-3 h-6 sm:h-10 bg-cherry-blossom ml-3 sm:ml-4 align-middle" />}
+            {isTyping && <motion.span animate={{ opacity: [0, 1, 0], scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="inline-block w-2 sm:w-3 h-6 sm:h-10 bg-cherry-blossom ml-2 sm:ml-4 align-middle" />}
           </p>
         </div>
       </div>
@@ -83,7 +83,7 @@ export default function DialogueBox({ speaker, text, onComplete }: Props) {
           <div className="absolute inset-0 bg-white/5 rounded-full blur-xl group-hover:bg-cherry-blossom/10 transition-all duration-700"></div>
 
           <div className="glass-morphism px-8 sm:px-12 py-3 sm:py-5 rounded-full border border-white/5 group-hover:border-white/20 transition-all duration-700 flex items-center gap-4 sm:gap-8 active:scale-95 shadow-2xl relative z-10">
-            <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.6em] font-black text-white/40 group-hover:text-white transition-colors duration-500">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em] font-black text-white/60 group-hover:text-white transition-colors duration-500">
               {isTyping ? 'SKIP' : 'PROCEED'}
             </span>
             <div className="w-8 sm:w-12 h-[1px] bg-white/10 group-hover:bg-cherry-blossom group-hover:w-16 transition-all duration-1000" />
