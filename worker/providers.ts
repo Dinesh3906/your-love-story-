@@ -20,7 +20,6 @@ function safeJsonParse(text: string): any {
 
 export interface Env {
     GROQ_API_KEY?: string;
-    GEMINI_API_KEY?: string;
     HF_API_KEY?: string;
 }
 
@@ -95,30 +94,7 @@ export async function generateWithGroq(apiKey: string, prompt: string, systemPro
     return JSON.parse(data.choices[0].message.content);
 }
 
-// --- Gemini (Free Tier) ---
-export async function generateWithGemini(apiKey: string, prompt: string, systemPrompt: string): Promise<any> {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            contents: [{
-                parts: [{ text: `${systemPrompt}\n\n${prompt}\n\nIMPORTANT: Return EXACTLY 4 options in the JSON schema.` }]
-            }],
-            generationConfig: {
-                responseMimeType: "application/json",
-                maxOutputTokens: 2048,
-                temperature: 0.8
-            }
-        })
-    });
-
-    if (!response.ok) throw new Error(`Gemini Status: ${response.status}`);
-    const data: any = await response.json();
-    const text = data.candidates[0].content.parts[0].text;
-    return JSON.parse(text);
-}
 
 export function buildUserPrompt(request: PromptRequest): string {
     let user_input_section = "";

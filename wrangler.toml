@@ -6,5 +6,3 @@ compatibility_date = "2024-01-01"
 # API keys are now managed securely via .dev.vars (for local) 
 # and wrangler secrets (for production) to avoid Git leaks.
 VITE_API_URL = "https://your-love-story-ai-backend.yourlovestory.workers.dev"
-
-# Add Gemini keys here if you get them later

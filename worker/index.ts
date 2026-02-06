@@ -1,4 +1,4 @@
-import { Env, generateWithGroq, generateWithGemini, generateWithPollinations, buildUserPrompt } from './providers';
+import { Env, generateWithGroq, generateWithPollinations, buildUserPrompt } from './providers';
 import { SYSTEM_PROMPT } from './prompts';
 
 export default {
@@ -39,9 +39,7 @@ export default {
                 .map(k => (env as any)[k])
                 .filter(key => key && key.startsWith('gsk_'));
 
-            const geminiKeys = Object.keys(env).filter(k => k.startsWith('GEMINI_API_KEY')).map(k => (env as any)[k]);
-
-            keyInfo = `(Groq Keys: ${groqKeys.length}, Gemini Keys: ${geminiKeys.length})`;
+            keyInfo = `(Groq Keys: ${groqKeys.length})`;
 
             let result = null;
             let errors = [];
@@ -61,19 +59,6 @@ export default {
                 }
             }
 
-            // 2. Fallback: Gemini (With full key rotation)
-            if (!result && geminiKeys.length > 0) {
-                const shuffledKeys = [...geminiKeys].sort(() => Math.random() - 0.5);
-                for (const key of shuffledKeys) {
-                    try {
-                        result = await generateWithGemini(key, userPrompt, SYSTEM_PROMPT);
-                        if (result) break;
-                    } catch (e: any) {
-                        errors.push(`Gemini (${e.message})`);
-                        continue;
-                    }
-                }
-            }
 
             // 3. Fallback: Pollinations (with retry)
             if (!result) {
