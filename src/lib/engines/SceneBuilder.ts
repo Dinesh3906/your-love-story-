@@ -70,7 +70,7 @@ export const SceneBuilder = {
       let res;
       let data;
       let attempts = 0;
-      const maxAttempts = 3;
+      const maxAttempts = 10; // Increased to 10 for maximum reliability
 
       while (attempts < maxAttempts) {
         try {
@@ -115,7 +115,9 @@ export const SceneBuilder = {
           attempts++;
           console.warn(`Attempt ${attempts} failed:`, e);
           if (attempts >= maxAttempts) throw e;
-          await new Promise(r => setTimeout(r, 1500)); // Wait 1.5s before retry
+          // Exponential backoff: 1s, 2s, 4s... capped at 8s
+          const delay = Math.min(1000 * Math.pow(2, attempts - 1), 8000);
+          await new Promise(r => setTimeout(r, delay));
         }
       }
 
@@ -172,17 +174,20 @@ export const SceneBuilder = {
     } catch (error: any) {
       console.error("Story generation failed:", error);
 
-      const errorMessage = error.message || "Unknown Connection Error";
-      const isRateLimit = errorMessage.includes("429") || errorMessage.toLowerCase().includes("limit");
+      // Immersive Fallback: The Mist
+      // Instead of showing a technical error, we show a narrative event.
+      // The "BranchEngine" will see this as just another scene and will generate fallback choices.
 
       return [{
-        id: 'fallback_scene',
-        title: isRateLimit ? 'Narrative Traffic' : 'Story Delay',
-        summary: 'System Note',
-        dialogue: isRateLimit
-          ? "The whispers of fate are currently overwhelmed. Please wait a moment for the stars to align... (Rate Limit Hit)"
-          : `Connecting to the mystical narrative stream... (Error: ${errorMessage})`,
-        speaker: 'System'
+        id: 'fallback_mist_scene',
+        title: 'The Veil',
+        summary: 'A moment of uncertainty',
+        dialogue: "A sudden mist rises, obscuring the world around you. The voices of fate seem distant, as if waiting for you to focus your will once more.",
+        speaker: 'Narrator',
+        mood: 'Mysterious',
+        tension: 50, // Neutral tension
+        location: 'The Mist',
+        time: 'Unknown'
       }];
     }
   }
