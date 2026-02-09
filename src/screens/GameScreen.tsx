@@ -84,8 +84,10 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
         const generatedScenes = await SceneBuilder.buildScenes(userPrompt, []);
         setScenes(generatedScenes);
         addToHistory(`User Prompt: ${userPrompt}`);
-        const fullStory = generatedScenes.map(s => `${s.speaker}: ${s.dialogue}`).join("\n");
-        addToHistory(`Story: ${fullStory}`);
+        if (generatedScenes[0]?.id !== 'fallback_mist_scene') {
+          const fullStory = generatedScenes.map(s => `${s.speaker}: ${s.dialogue}`).join("\n");
+          addToHistory(`Story: ${fullStory}`);
+        }
       } catch (error) {
         console.error("Initialization failed:", error);
       } finally {
@@ -159,8 +161,11 @@ export default function GameScreen({ onGameOver }: { onGameOver: () => void }) {
       setSceneIndex(newIndex);
       setCurrentScene(nextScenes[0].id);
 
-      const fullStory = nextScenes.map(s => `${s.speaker}: ${s.dialogue}`).join("\n");
-      addToHistory(`Story: ${fullStory}`);
+      // ONLY add to history if it's NOT a fallback scene
+      if (nextScenes[0].id !== 'fallback_mist_scene') {
+        const fullStory = nextScenes.map(s => `${s.speaker}: ${s.dialogue}`).join("\n");
+        addToHistory(`Story: ${fullStory}`);
+      }
     } catch (error) {
       console.error("Failed to continue story:", error);
       onGameOver();

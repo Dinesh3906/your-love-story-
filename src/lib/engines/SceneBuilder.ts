@@ -20,7 +20,7 @@ export const SceneBuilder = {
     try {
       const { setRawNarrative, setStats, userGender, getCurrentScene, stats, stateTracker, updateStateTracker } = useGameStore.getState();
       const currentScene = getCurrentScene();
-      const currentLocation = currentScene?.location;
+      const currentLocation = currentScene?.location === 'The Mist' ? undefined : currentScene?.location;
 
       // Update State Tracker Logic (Before request)
       const now = Date.now();

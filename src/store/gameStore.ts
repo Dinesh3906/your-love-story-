@@ -43,6 +43,7 @@ export interface GameState {
     trust: number;
     tension: number;
     emotionalStability: number;
+    vulnerable: boolean;
   };
   history: string[];
   rawNarrative: string;
@@ -62,8 +63,8 @@ export interface GameState {
   setRawNarrative: (narrative: string) => void;
   setCharacterBindings: (bindings: Record<string, string>) => void;
   getCurrentScene: () => Scene | null;
-  updateStats: (effects: { relationship?: number; trust?: number }) => void;
-  setStats: (stats: { relationship?: number; trust?: number; tension?: number }) => void;
+  updateStats: (effects: { relationship?: number; trust?: number; vulnerable?: boolean }) => void;
+  setStats: (stats: { relationship?: number; trust?: number; tension?: number; vulnerable?: boolean }) => void;
   updateStateTracker: (updates: Partial<StateTracker>) => void;
   addToHistory: (entry: string) => void;
   resetGame: () => void;
@@ -75,7 +76,7 @@ const initialState: Omit<GameState, 'setScenes' | 'setCharacters' | 'updateChara
   characters: [],
   scenes: [],
   userPrompt: '',
-  stats: { relationship: 50, trust: 50, tension: 0, emotionalStability: 50 },
+  stats: { relationship: 50, trust: 50, tension: 0, emotionalStability: 50, vulnerable: false },
   history: [],
   rawNarrative: '',
   userGender: 'male' as const,
@@ -114,6 +115,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       ...s.stats,
       relationship: Math.min(100, Math.max(0, s.stats.relationship + (effects.relationship || 0))),
       trust: Math.min(100, Math.max(0, s.stats.trust + (effects.trust || 0))),
+      vulnerable: effects.vulnerable !== undefined ? effects.vulnerable : s.stats.vulnerable,
     }
   })),
   setStats: (newStats) => set((s) => ({
@@ -122,6 +124,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       relationship: newStats.relationship !== undefined ? Math.min(100, Math.max(0, newStats.relationship)) : s.stats.relationship,
       trust: newStats.trust !== undefined ? Math.min(100, Math.max(0, newStats.trust)) : s.stats.trust,
       tension: newStats.tension !== undefined ? Math.min(100, Math.max(0, newStats.tension)) : s.stats.tension,
+      vulnerable: newStats.vulnerable !== undefined ? newStats.vulnerable : s.stats.vulnerable,
     }
   })),
   updateStateTracker: (updates) => set((s) => ({
