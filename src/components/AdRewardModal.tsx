@@ -15,13 +15,13 @@ export const AdRewardModal = ({ isOpen, onClose }: AdRewardModalProps) => {
     const [pendingReward, setPendingReward] = useState<'trust' | 'relationship' | 'vulnerable' | null>(null);
 
     // AdMob Configuration from User
-    const ADMOB_AD_UNIT_ID = "ca-app-pub-5173875521561209/1077537977";
+    const ADMOB_AD_UNIT_ID = "ca-app-pub-5173875521561209/3146050116";
 
     useEffect(() => {
         if (Capacitor.isNativePlatform()) {
             AdMob.initialize({
                 testingDevices: [],
-                initializeForTesting: true,
+                initializeForTesting: false,
             }).catch(e => console.error("AdMob Init Error:", e));
         }
     }, []);

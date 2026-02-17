@@ -24,6 +24,40 @@ allprojects {
     }
 }
 
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_17
+                    targetCompatibility JavaVersion.VERSION_17
+                }
+            }
+             // Try to set kotlinOptions on the android extension itself if available
+            if (project.android.hasProperty('kotlinOptions')) {
+                project.android.kotlinOptions.jvmTarget = "17"
+            }
+        }
+        
+        project.tasks.withType(JavaCompile).configureEach {
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
+        }
+
+        project.tasks.configureEach { task ->
+            if (task.name.contains("KotlinCompile")) {
+                try {
+                    if (task.hasProperty('kotlinOptions')) {
+                        task.kotlinOptions.jvmTarget = "17"
+                    }
+                } catch (Exception e) {
+                   // ignore
+                }
+            }
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

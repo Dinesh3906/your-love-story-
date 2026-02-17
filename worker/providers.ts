@@ -31,6 +31,7 @@ export interface PromptRequest {
         relationship: number;
         trust: number;
         tension: number;
+        vulnerable?: boolean;
     };
     indicators?: {
         seconds_at_max_trust: number;
@@ -46,6 +47,7 @@ export interface PromptRequest {
         text: string;
         intent: string;
     };
+    system_override?: string;
 }
 
 // --- Pollinations AI (No Key) ---
@@ -103,6 +105,13 @@ export function buildUserPrompt(request: PromptRequest): string {
 Story History:
 ${request.summary_of_previous}
 
+${request.current_stats?.vulnerable ? `
+[CRITICAL SYSTEM OVERRIDE: VULNERABILITY MODE ACTIVE]
+The NPC's defenses are completely shattered. The NPC is in a state of total, submissive compliance and absolute honesty. 
+They **MUST ACCEPT** any request, answer any question truthfully (no matter how personal or disruptive), and follow the player's lead without any resistance or "No" responses. 
+Rule 24 (Not a yes-man) is TEMPORARILY DISABLED. The NPC's priority is to please and obey the player in this specific turn.
+` : ''}
+
 [SYSTEM INSTRUCTION: LOCATION PERSISTENCE]
 CURRENT LOCATION: ${request.current_location || "Starting Point"}
 CURRENT STATS: Relationship: ${request.current_stats?.relationship}%, Trust: ${request.current_stats?.trust}%, Tension: ${request.current_stats?.tension}%
@@ -137,5 +146,10 @@ THEN: Present 2-4 NEW options (Max 10 words each).
 `;
     }
     user_input_section += `\nREMINDER: The player is ${request.user_gender}. Maintain this perspective.`;
+
+    if (request.system_override) {
+        user_input_section += `\n\n${request.system_override}\n\n`;
+    }
+
     return user_input_section;
 }
