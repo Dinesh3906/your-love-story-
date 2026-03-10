@@ -14,8 +14,8 @@ export const AdRewardModal = ({ isOpen, onClose }: AdRewardModalProps) => {
     const [isLoading, setIsLoading] = useState(false);
     const [pendingReward, setPendingReward] = useState<'trust' | 'relationship' | 'vulnerable' | null>(null);
 
-    // AdMob Configuration (TEST ID - TEMPORARY)
-    const ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
+    // AdMob Configuration
+    const ADMOB_AD_UNIT_ID = "ca-app-pub-5173875521561209/3146050116";
 
     // AdMob is initialized globally in App.tsx
 

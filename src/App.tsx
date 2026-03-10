@@ -9,8 +9,8 @@ import { AchievementOverlay } from './components/AchievementOverlay';
 import { AdMob, BannerAdOptions, BannerAdSize, BannerAdPosition, BannerAdPluginEvents, AdMobBannerSize } from '@capacitor-community/admob';
 import { Capacitor } from '@capacitor/core';
 
-// Ad Unit IDs (TEST MODE)
-const BANNER_AD_ID = "ca-app-pub-3940256099942544/6300978111";
+// Ad Unit IDs
+const BANNER_AD_ID = "ca-app-pub-5173875521561209/7532909301";
 
 function App() {
   const [gameState, setGameState] = useState<'start' | 'playing' | 'ending'>('start');
@@ -25,7 +25,6 @@ function App() {
     try {
       await AdMob.initialize({
         testingDevices: [],
-        initializeForTesting: true, // TEMPORARY TEST MODE (as requested for rewards)
       });
 
       // Show Banner
