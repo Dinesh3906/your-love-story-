@@ -1,7 +1,7 @@
 {
   "name": "my-love-story",
   "private": true,
-  "version": "2.4.1",
+  "version": "2.4.2",
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 vite",
